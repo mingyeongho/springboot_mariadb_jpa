@@ -1,9 +1,13 @@
 package com.springboot.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springboot.domain.posts.Post;
 import com.springboot.service.PostService;
 import com.springboot.web.dto.PostSaveRequestDto;
 
@@ -26,8 +30,10 @@ public class IndexController {
 	}
 	
 	@PostMapping("/post")
-	public String write(PostSaveRequestDto requestDto) {
-		postService.save(requestDto);
+	public String write(HttpServletRequest request, PostSaveRequestDto postSaveRequestDto) {
+		
+		postService.save(postSaveRequestDto.builder().title(request.getParameter("title")).content(request.getParameter("content"))
+				.author(request.getParameter("author")).build());
 		return "redirect:/";
 	}
 }
