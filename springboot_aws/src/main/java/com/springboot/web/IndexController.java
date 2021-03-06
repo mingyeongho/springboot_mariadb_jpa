@@ -1,5 +1,7 @@
 package com.springboot.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.springboot.domain.posts.Post;
 import com.springboot.service.PostService;
 import com.springboot.web.dto.PostSaveRequestDto;
 
@@ -20,7 +21,9 @@ public class IndexController {
 	private final PostService postService; // RequiredArgsConstructor로 DI해줌.
 	
 	@GetMapping("/")
-	public String index() {
+	public String index(Model model) {
+		List<PostSaveRequestDto> postDtoList = postService.getPostList();
+		model.addAttribute("postList", postDtoList);
 		return "board/list";
 	}
 	

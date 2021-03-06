@@ -14,7 +14,7 @@
 						<th scope="col">#</th>
 						<th scope="col">Title</th>
 						<th scope="col">Author</th>
-						<th scope="col">Lastmodified</th>
+						<th scope="col">CreatedDate</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -31,7 +31,7 @@
 							<span th:text="${post.author}"></span>
 						</td>
 						<td>
-							<span th:text="${#temporals.format(post.lastmodifiedDate, 'yyyy-MM-dd HH:mm')}"></span>
+							<span th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
 						</td>
 					</tr>
 				</tbody>
