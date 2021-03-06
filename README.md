@@ -13,3 +13,4 @@ springboot_mariadb_jpa로 게시판 만들기
 - RestController 등 여러 방식을 해보았지만 실패함.
 - PostMapping에서 syso(requestDto.getAuthor())를 해봤는데 null이 나온 것으로 보아 requestDto가 잘못된 거 같음.
 - requestDto 클래스를 보면 별 문제 없어보임...
+-> 타임리프에서 data access하는 게 문제임. 근데 아무리 바꿔도 해결할 수가 없어서 httpServletRequest를 사용해서 데이터를 일일이 build해줌
